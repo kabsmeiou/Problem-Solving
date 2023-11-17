@@ -19,13 +19,11 @@ int main() {
             }
         }
         vector<vector<int>> vis(n, vector<int>(m, false));
-        std::function<int(int, int)> dfs = [&a, &vis, &dfs](int x, int y) -> int {
+        function<int(int, int)> dfs = [&a, &vis, &dfs](int x, int y) -> int {
             int dx[] = {-1, 1, 0, 0};
             int dy[] = {0, 0, -1, 1};
-            
             vis[x][y] = true;
             int sum = a[x][y];
-
             for (int i = 0; i < 4; i++) {
                 int newX = x + dx[i];
                 int newY = y + dy[i];
@@ -33,7 +31,6 @@ int main() {
                     sum += dfs(newX, newY);
                 }
             }
-
             return sum;
         };
         int ans = 0;
