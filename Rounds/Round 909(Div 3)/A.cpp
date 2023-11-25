@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int T;
+    cin >> T;
+    while (T--) {
+        int n;
+        cin >> n;
+        cout << ((n - 1) % 3 == 0 || (n + 1) % 3 == 0 ? "First" : "Second") << '\n';
+    }
+}
