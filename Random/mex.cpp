@@ -34,7 +34,7 @@ signed main() {
             int now = mex(a);
             ok = (now == cur + 1);
             cout << (ok ? "YES" : "NO") << '\n';
-            continue;
+            continue;   
         }
         for (int i = 0; i < n; i++) {
             if (a[i] > cur || (l[a[i]] != r[a[i]])) {
