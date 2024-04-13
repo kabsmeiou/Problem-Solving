@@ -9,26 +9,34 @@ signed main() {
     while (T--) {
         int n, m, x;
         cin >> n >> m >> x;
-        int sum = 0;
-        vector<int> dp(n, 0);
-        dp[x] = true;
+        vector<int> ans(n, 0);
+        ans[x - 1] = 1;
         for (int i = 0; i < m; i += 1) {
-            int a;
-            char b;
-            cin >> a >> b;
+            int r;
+            char c;
+            cin >> r >> c;
             vector<int> cur(n, 0);
             for (int j = 0; j < n; j += 1) {
-                if (dp[j]) {
-                    if (b == '0' || b == '?') {
-                        cur[(j + a) % n] = 1;
+                if (ans[j]) {
+                    if (c == '0' || c == '?') {
+                        cur[(j + r) % n] = 1;
                     }
-                    if (b == '1' || b == '?') {
-                        cur[(j + n - a) % n] = 1;
+                    if (c == '1' || c == '?') {
+                        cur[(n + j - r) % n] = 1;
                     }
                 }
             }
-            dp = cur;
+            ans = cur;
         }
-        
+        int cnt = count(ans.begin(), ans.end(), 1);
+        if (cnt) {
+            cout << cnt << '\n';
+            for (int i = 0; i < n; i += 1) {
+                if (ans[i]) cout << i + 1 << ' ';
+            }
+            cout << '\n';
+            continue;
+        }
+        cout << -1 << '\n';
     }
 }
