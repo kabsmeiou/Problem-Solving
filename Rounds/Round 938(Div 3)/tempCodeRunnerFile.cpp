@@ -1,0 +1,1 @@
+(pref[cur] != (k + 1) / 2 ? pref[cur - 1] : pref[cur])
