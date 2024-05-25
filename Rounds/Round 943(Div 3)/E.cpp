@@ -7,6 +7,8 @@ signed main() {
     int T;
     cin >> T;
     while (T--) {
+        int n;
+        cin >> n;
         
     }
 }
