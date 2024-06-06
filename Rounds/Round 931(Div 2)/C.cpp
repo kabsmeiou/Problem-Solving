@@ -7,6 +7,12 @@ signed main() {
     int T;
     cin >> T;
     while (T--) {
-        
+        int n, m;
+        cin >> n >> m;
+        int k = -1;
+        int x = 1, y = 1;
+        while (k != 0) {
+            cout << '?' << x << ' ' << y << '\n';
+        }
     }
 }
