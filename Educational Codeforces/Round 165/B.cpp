@@ -10,16 +10,12 @@ signed main() {
         string s;
         cin >> s;
         int n = s.size();
-        int ans = 0;
-        priority_queue<int, vector<int>, greater<int>> q;
+        int ans = 0, k = 0;
         for (int i = 0; i < n; i += 1) {
             if (s[i] == '1') {
-                q.push(i);
-            } else if (s[i] == '0' && !q.empty()) {
-                //cout << i << ' ' << q.top() << '\n';
-                ans += i - q.top() + 1;
-                q.pop();
-                q.push(i);
+                k += 1;
+            } else if (s[i] == '0') {
+                ans += (!k ? 0 : k + 1);
             }
         }
         cout << ans << '\n';
