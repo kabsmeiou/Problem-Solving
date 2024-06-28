@@ -3,7 +3,7 @@
 using namespace std;
 signed main() {
     ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    cin.tie(0);
     int T;
     cin >> T;
     while (T--) {
@@ -11,19 +11,20 @@ signed main() {
         cin >> n;
         vector<int> a(n);
         for (auto &c : a) cin >> c;
+        int ans = *max_element(a.begin(), a.end()) - *min_element(a.begin(), a.end());
         vector<int> pref(n + 1, 0);
-        for (int i = 0; i < n; i++) {
-            pref[i + 1] = a[i] + pref[i];
+        for (int i = 1; i <= n; i += 1) {
+            pref[i] = pref[i - 1] + a[i - 1];
         }
-        int ans = 0;
-        for (int z = 1; z < n; z++) {
-            if (n % z != 0) continue;
-            int mx = 0, mn = 2e18;
-            for (int j = 0; j < n; j += z) {
-                mx = max(pref[j + z] - pref[j], mx);
-                mn = min(pref[j + z] - pref[j], mn);
+        for (int i = 2; i <= n / 2; i += 1) {
+            if (n % i == 0) {
+                int cmax = pref[i], cmin = pref[i];
+                for (int j = i; j <= n; j += i) {
+                    cmax = max(cmax, pref[j] - pref[j - i]);
+                    cmin = min(cmin, pref[j] - pref[j - i]);
+                }
+                ans = max(ans, cmax - cmin);
             }
-            ans = max(mx - mn, ans);
         }
         cout << ans << '\n';
     }
