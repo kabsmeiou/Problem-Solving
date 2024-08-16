@@ -11,8 +11,11 @@ signed main() {
         cin >> n >> m;
         int k = -1;
         int x = 1, y = 1;
-        while (k != 0) {
-            cout << '?' << x << ' ' << y << '\n';
+        cout << '?' << x << ' ' << y << '\n';
+        cin >> k;
+        if (k) {
+            cout << '?' << (n + 1) / 2 << ' ' << k << '\n';
+            cin >> k;
         }
     }
 }
